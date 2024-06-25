@@ -175,7 +175,7 @@ const BuddyProfile = () => {
           ))}
         </div>
       ) : (
-        <p>No activities created.</p>
+        <p>Either No activities created or You have joined it already.</p>
       )}
       {/* Add more details as needed */}
     </div>

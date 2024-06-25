@@ -93,6 +93,7 @@ const AddActivity = () => {
           date: '',
           time: ''
         });
+        window.location.replace('/createActivity');
         
       } else {
         const errorText = await response.text();
