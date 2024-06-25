@@ -103,5 +103,4 @@ function Header({ isLoggedIn, setIsLoggedIn, userEmail }) {
     </Navbar>
   );
 }
-
 export default Header;
