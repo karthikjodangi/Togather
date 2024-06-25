@@ -1,0 +1,64 @@
+.green-button, .blue-button, .orange-button, .red-button, .purple-button, .teal-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.green-button {
+    background: linear-gradient(to right, #4CAF50, #45a049); 
+}
+
+.blue-button {
+    background: linear-gradient(to right, #008CBA, #005f8b); 
+}
+
+.orange-button {
+    background: linear-gradient(to right, #FFA500, #e68a00); 
+}
+
+.red-button {
+    background: linear-gradient(to right, #FF0000, #cc0000); 
+}
+
+.purple-button {
+    background: linear-gradient(to right, #800080, #6A5ACD); 
+}
+
+.teal-button {
+    background: linear-gradient(to right, #1abc9c, #16a085); 
+}
+
+.teal-button:hover {
+    background: linear-gradient(to right, #16a085, #1abc9c); 
+}
+
+.green-button:hover {
+    background: linear-gradient(to right, #45a049, #4CAF50); 
+}
+
+.blue-button:hover {
+    background: linear-gradient(to right, #005f8b, #008CBA); 
+}
+
+.orange-button:hover {
+    background: linear-gradient(to right, #e68a00, #FFA500); 
+}
+
+.red-button:hover {
+    background: linear-gradient(to right, #cc0000, #FF0000);
+}
+
+.purple-button:hover {
+    background: linear-gradient(to right, #6A5ACD, #800080); 
+}
+
+

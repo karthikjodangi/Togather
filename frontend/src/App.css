@@ -1,0 +1,107 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: red;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  text-align: center;
+}
+
+.options-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.option {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+}
+
+.option button {
+  width: 150px; /* Adjust button width as needed */
+  margin: 30% auto; /* Center horizontally */
+}
+
+
+.activity-view {
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.activity-view.join {
+  justify-content: flex-end;
+}
+
+.activity-view.create {
+  justify-content: flex-start;
+}
+
+.active {
+  background-color: lightblue; /* Add your active button styles */
+}
+
+
+.green-text {
+  color: green;
+}
+
+.blue-text {
+  color: blue;
+}
+
+.orange-text {
+  color: orange;
+}
+
+
