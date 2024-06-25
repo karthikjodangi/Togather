@@ -26,7 +26,7 @@ function Header({ isLoggedIn, setIsLoggedIn, userEmail }) {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('userEmail');
     setIsLoggedIn(false);
-    window.location.href = '/';
+    window.location.href = '/login';
   };
 
   return (

@@ -1,5 +1,6 @@
 package com.example.demo.user;
 
+import com.example.demo.DTO.Buddy;
 import com.example.demo.activity.Activity;
 import com.example.demo.activity.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +67,23 @@ public class UserController {
     public ResponseEntity<List<Activity>> getJoinedActivities(@PathVariable String emailId) {
         List<Activity> activities = userService.getJoinedActivities(emailId);
         return ResponseEntity.ok(activities);
+    }
+
+    @GetMapping("/addBuddies/{emailId}")
+    public ResponseEntity<List<User>> getBuddies(@PathVariable String emailId){
+        List<User> users = userService.getBuddies(emailId);
+        return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/myBuddies/{emailId}")
+    public ResponseEntity<List<User>> getMyBuddies(@PathVariable String emailId){
+        List<User> users = userService.getMyBuddies(emailId);
+        return ResponseEntity.ok(users);
+    }
+
+    @PostMapping("/addBuddy")
+    public ResponseEntity<String> addBuddy(@RequestBody Buddy buddy){
+        String user = userService.addBuddy(buddy);
+        return ResponseEntity.ok(user);
     }
 }

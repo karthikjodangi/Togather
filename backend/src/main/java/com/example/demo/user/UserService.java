@@ -1,5 +1,6 @@
 package com.example.demo.user;
 
+import com.example.demo.DTO.Buddy;
 import com.example.demo.activity.Activity;
 import com.example.demo.activity.ActivityRepository;
 import org.bson.types.ObjectId;
@@ -23,6 +24,7 @@ public class UserService {
         }
         user.setJoinedActivities(new ArrayList<String>());
         user.setCreatedActivities(new ArrayList<String>());
+        user.setBuddies(new ArrayList<User>());
         return userRepository.save(user);
     }
 
@@ -74,5 +76,34 @@ public class UserService {
             i++;
         }
         return activities;
+    }
+
+    public List<User> getBuddies(String emailId) {
+        List<User> users = userRepository.findAll();
+        User user = userRepository.findByEmailId(emailId);
+        users.remove(user);
+
+        List<User> buddies = user.getBuddies();
+        int i =0, buddiesSize = buddies.size();
+        while(i < buddiesSize) {
+            users.remove(buddies.get(i));
+            i++;
+        }
+        return users;
+    }
+
+    public List<User> getMyBuddies(String emailId) {
+        User user = userRepository.findByEmailId(emailId);
+        return user.getBuddies();
+    }
+
+    public String addBuddy(Buddy buddy) {
+        String emailId = buddy.getEmailId();
+        User user = userRepository.findByEmailId(emailId);
+        User bd = buddy.getUser();
+        User bde = userRepository.findByEmailId(bd.getEmailId());
+        user.appendBuddy(bde);
+        userRepository.save(user);
+        return bd.getEmailId();
     }
 }

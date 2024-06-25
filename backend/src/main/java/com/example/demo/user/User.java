@@ -21,6 +21,7 @@ public class User {
     private String password, name;
     private List<String> createdActivities;
     private List<String> joinedActivities;
+    private List<User> buddies;
 
     public void appendCreatedActivity(String id){
         createdActivities.add(id);
@@ -28,6 +29,10 @@ public class User {
 
     public void appendJoinedActivity(String id){
         joinedActivities.add(id);
+    }
+
+    public void appendBuddy(User user){
+        buddies.add(user);
     }
 
     public boolean isMyActivity(String activityId){

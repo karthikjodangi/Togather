@@ -1,46 +1,110 @@
-import React from 'react';
-import natureImg from '../Images/nature.webp';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import profileImg from'../Images/profile.png'
 
 const Buddies = () => {
-  const containerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    width: '100vw',
-    height: '95vh',
-    margin: 0,
-    padding: '20px 0',
-    backgroundImage: `url(${natureImg})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    color: 'white',
-    textAlign: 'center',
-    fontSize: '2em',
-    fontFamily: 'Arial, sans-serif',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
-    boxSizing: 'border-box',
-    overflow: 'hidden',
+  const [myBuddies, setMyBuddies] = useState([]);
+  const [addBuddies, setAddBuddies] = useState([]);
+
+  const loggedInUserEmail = localStorage.getItem('userEmail');
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/user/myBuddies/${loggedInUserEmail}`)
+      .then(response => {
+        setMyBuddies(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching my buddies:', error);
+      });
+  }, [loggedInUserEmail]);
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/user/addBuddies/${loggedInUserEmail}`)
+      .then(response => {
+        setAddBuddies(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching add buddies:', error);
+      });
+  }, [loggedInUserEmail]);
+
+
+  const addBuddy = (buddy) => {
+    const requestBody = {
+      emailId: loggedInUserEmail, 
+      user: {
+        emailId: buddy.emailId,
+        password: '', 
+        name: '', 
+        createdActivities: [],
+        joinedActivities: [],
+        buddies: []
+      }
+    };
+
+    axios.post(`http://localhost:8080/api/user/addBuddy`, requestBody)
+      .then(response => {
+       
+        alert(`Successfully added ${buddy.name} as your buddy!`);
+     
+        axios.get(`http://localhost:8080/api/user/myBuddies/${loggedInUserEmail}`)
+          .then(response => {
+            setMyBuddies(response.data);
+          })
+          .catch(error => {
+            console.error('Error refreshing my buddies:', error);
+          });
+        axios.get(`http://localhost:8080/api/user/addBuddies/${loggedInUserEmail}`)
+          .then(response => {
+            setAddBuddies(response.data);
+          })
+          .catch(error => {
+            console.error('Error refreshing add buddies:', error);
+          });
+      })
+      .catch(error => {
+        console.error('Error adding buddy:', error);
+      });
   };
 
-  const textStyle = {
-    margin: 0,
-    padding: '10px 20px',
-    backgroundColor: 'rgba(0,0,0,0.8',
-    borderRadius: '10px',
-
-  };
-
+  
   return (
-    <div style={containerStyle}>
-      <div style={textStyle}>
-        This feature is not available yet, till then <br></br>
-        Play with your best buddy NATURE 🌳 <br></br>
-        Go create and join nature conservation activities! 🌿
+    <>
+      <div className="container mt-4 mb-4">
+        <div className="row mt-4 mb-4">
+          <h2>My Buddies</h2>
+          {myBuddies.map(buddy => (
+            <div key={buddy.emailId} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+              <div className="card">
+                <img src={profileImg} className="card-img-top" alt={buddy.name} style={{ height: '200px', objectFit: 'contain' }} />
+                <div className="card-body text-center">
+                <h5 className="card-title" style={{ fontSize: '1.5rem' }}>{buddy.name}</h5>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+  
+        <div className="row mt-4 mb-4">
+          <h2>Add Buddies</h2>
+          {addBuddies.map(buddy => (
+            <div key={buddy.emailId} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+              <div className="card">
+                <img src={profileImg} className="card-img-top" alt={buddy.name} style={{ height: '200px', objectFit: 'contain' }} />
+                <div className="card-body text-center">
+                <h5 className="card-title" style={{ fontSize: '1.5rem' }}>{buddy.name}</h5>
+                  <button className="btn btn-primary" onClick={() => addBuddy(buddy)}>Add Buddy</button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
-}
+  
+};
 
 export default Buddies;
