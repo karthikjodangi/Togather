@@ -67,7 +67,8 @@ function Header({ isLoggedIn, setIsLoggedIn, userEmail }) {
                 style={{ color: 'white', fontSize: '16px' }}
                 className="me-2"
               >
-                {userName}
+                <Nav.Link href="/myactivities" >{userName}</Nav.Link>
+
               </Button>
               <Button
                 variant="outline-danger"

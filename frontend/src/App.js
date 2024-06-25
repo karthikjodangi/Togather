@@ -15,6 +15,7 @@ import SignUp from './MyComponents/SignUp';
 import sereneImg from './Images/serene.png';
 import AddActivity from './MyComponents/AddActivity';
 import JoinActivityByType from './MyComponents/JoinActivityByType';
+import BuddyProfile from './MyComponents/BuddyProfile';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -80,6 +81,7 @@ const App = () => {
                 <Route path="/myactivities" element={<MyActivities isLoggedIn={isLoggedIn} />} />
                 <Route path="/createActivity" element={<CreateActivity />} />
                 <Route path="/joinActivity" element={<JoinActivity />} />
+                <Route path="/buddies/profile/:buddyEmailId" element={<BuddyProfile />} />
               </>
             ) : (
               <>

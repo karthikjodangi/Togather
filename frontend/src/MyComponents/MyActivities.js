@@ -184,8 +184,8 @@ const MyActivities = () => {
                   <h5 style={cardTextStyle}>{activity.title}</h5>
                   <p style={cardTextStyle}>{activity.description}</p>
                   <p style={cardTextStyle}><strong>Place:</strong> {activity.place}</p>
-                  <p style={cardTextStyle}><strong>Date:</strong> {new Date(activity.date).toLocaleDateString()}</p>
-                  <p style={cardTextStyle}><strong>Time:</strong> {new Date(activity.date).toLocaleTimeString()}</p>
+                  <p style={cardTextStyle}><strong>Date:</strong> {activity.date}</p>
+                  <p style={cardTextStyle}><strong>Time:</strong> {activity.time}</p>
 
                   <div className="circle">
                     {getJoinedEmails(activity.id, createdActivities).length}
@@ -238,8 +238,8 @@ const MyActivities = () => {
                   <h5 style={cardTextStyle}>{activity.title}</h5>
                   <p style={cardTextStyle}>{activity.description}</p>
                   <p style={cardTextStyle}><strong>Place:</strong> {activity.place}</p>
-                  <p style={cardTextStyle}><strong>Date:</strong> {new Date(activity.date).toLocaleDateString()}</p>
-                  <p style={cardTextStyle}><strong>Time:</strong> {new Date(activity.date).toLocaleTimeString()}</p>
+                  <p style={cardTextStyle}><strong>Date:</strong> {activity.date}</p>
+                  <p style={cardTextStyle}><strong>Time:</strong> {activity.time}</p>
 
                   <div className="circle">
                     {getJoinedEmails(activity.id, joinedActivities).length}

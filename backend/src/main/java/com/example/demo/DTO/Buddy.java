@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Buddy {
-    private String emailId;
-    private User user;
+    private String userEmailId;
+    private String buddyEmailId;
 }

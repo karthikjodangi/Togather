@@ -86,4 +86,16 @@ public class UserController {
         String user = userService.addBuddy(buddy);
         return ResponseEntity.ok(user);
     }
+
+    @PostMapping("/removeBuddy")
+    public ResponseEntity<String> removeBuddy(@RequestBody Buddy buddy){
+        String user = userService.removeBuddy(buddy);
+        return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/buddies/profile/{buddyEmailId}")
+    public ResponseEntity<User> buddyProfile(@PathVariable String buddyEmailId){
+        User user = userService.buddyProfile(buddyEmailId);
+        return ResponseEntity.ok(user);
+    }
 }

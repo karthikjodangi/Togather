@@ -19,7 +19,7 @@ public class Activity {
     private String id;
     private String emailId;
     private String type="Others",title,description,place,date,time;
-    private String status = "Ongoing";
+    private String status = "ongoing";
     private List<String> joinedUsers = new ArrayList<>();
 
     public void appendJoinedUsers(String emailId){
